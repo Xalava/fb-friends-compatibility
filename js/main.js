@@ -47,10 +47,11 @@ function initializeApp() {
 		var imgSrc = getGraphImgSrc(myData.me.id) + "?type=large";
 		$('<img id="profile-image" style="display: none;" src="' + imgSrc +'" />').appendTo('#left-div');
 		$('#profile-image').toggle('slow');
-		FB.api('me/friends', apiCallback2);
 	}
 	// Gets user info from Facebook
 	FB.api('me', apiCallback1);
+	// Get friends info from Facebook
+	FB.api('me/friends', apiCallback2);
 }
 
 // Makes the appropriate button commence calculations if pressed.
@@ -200,8 +201,8 @@ $(document).ready(function() {
 
 function init() {
 	FB.init({
-		appId : APP_ID,
-        channelUrl : CHANNEL_URL, // Full url on your website to the channel.html file in this repo.
+		appId : '328988547203285',
+		channelUrl : "vast-shelf-9526.herokuapp.com/channel.html",
 		status : true,
 		cookie : true,
 		oauth : true,
@@ -213,6 +214,7 @@ function init() {
 
 // Code called on "facebook:ready" event
 $(document).on("facebook:ready", function() {
+	FB.Canvas.setSize();
 	authorize();
 });
 
@@ -235,7 +237,6 @@ function authorize() {
 // Wrapper around FB.login
 function login() {
     FB.login(function(response) {
-    	console.log(response);
         if (response.authResponse) {
             // Connected
             handleUserConnect(response);

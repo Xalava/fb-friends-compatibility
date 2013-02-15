@@ -1,6 +1,4 @@
-<?php
-	header('P3P: CP="CAO PSA OUR"');
-?>
+<?php header('P3P: CP="CAO PSA OUR"'); ?>
 <!doctype html>
 <!--[if IE 7]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html lang="en" class="no-js ie8 oldie"> <![endif]-->
