@@ -200,8 +200,8 @@ $(document).ready(function() {
 
 function init() {
 	FB.init({
-		appId : '328988547203285',
-		channelUrl : "vast-shelf-9526.herokuapp.com/channel.html",
+		appId : APP_ID,
+        channelUrl : CHANNEL_URL, // Full url on your website to the channel.html file in this repo.
 		status : true,
 		cookie : true,
 		oauth : true,
