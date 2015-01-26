@@ -201,11 +201,11 @@ $(document).ready(function() {
 
 function init() {
 	FB.init({
-		appId : '328988547203285',
-		channelUrl : "vast-shelf-9526.herokuapp.com/channel.html",
+		appId : '628931087252343',
+		// channelUrl : "vast-shelf-9526.herokuapp.com/channel.html",
 		status : true,
-		cookie : true,
-		oauth : true,
+		// cookie : true,
+		// oauth : true,
 		xfbml : true
 	});
 	
