@@ -2,7 +2,7 @@
 //========================
 
 var myData = myData || {
-	scope : 'user_likes, friends_likes', // Additional permissions.
+	scope : 'public_profile,user_likes,user_friends', // Additional permissions.
 }
 var categories = categories || ['books', 'games', 'movies', 'music'];
 var err_msgs = err_msgs || [
@@ -19,9 +19,11 @@ var compatibleFriends = compatibleFriends || {}
 function initializeApp() {
 	// Finalizes user's friends basic info after second Ajax.
 	var apiCallback2 = function(response) {
+				console.log("apiCallback2");
+
 		myData.myFriends = response.data;
 		var err_msg = _.findWhere(err_msgs, {'field' : 'friends'});
-		if(errorChecking(myData.myFriends, err_msg)) { return; } // Stop application on error.
+		if(errorChecking(myData.myFriends, err_msg)) { console.log(err_msg); return; } // Stop application on error.
 		// Initialize some counters for API calls later on.
 		for (var i=0; i<categories.length; i++) {
 			myData[categories[i] + 'toProcess'] = myData.myFriends.length; 
@@ -36,6 +38,7 @@ function initializeApp() {
 	}
 	// Finalizes basic user info after first Ajax.
 	var apiCallback1 = function(response) {
+		console.log("apiCallback1");
 		myData.me = response;
 		var possible = [response.first_name, response.name, response.username, response.id];
 		myData.greetingName = _(possible).chain()
@@ -48,10 +51,11 @@ function initializeApp() {
 		$('<img id="profile-image" style="display: none;" src="' + imgSrc +'" />').appendTo('#left-div');
 		$('#profile-image').toggle('slow');
 	}
+	console.log("Init infos in initializeApp");
 	// Gets user info from Facebook
-	FB.api('me', apiCallback1);
+	FB.api('/me', apiCallback1);
 	// Get friends info from Facebook
-	FB.api('me/friends', apiCallback2);
+	FB.api('/me/friends', apiCallback2);
 }
 
 // Makes the appropriate button commence calculations if pressed.
@@ -202,11 +206,11 @@ $(document).ready(function() {
 function init() {
 	FB.init({
 		appId : '628931087252343',
-		// channelUrl : "vast-shelf-9526.herokuapp.com/channel.html",
-		status : true,
-		// cookie : true,
-		// oauth : true,
-		xfbml : true
+		status 	: true,
+		cookie : true,
+		oauth : true,
+		xfbml 	: true,
+		version	: 'v2.2'
 	});
 	
 	$(document).trigger("facebook:ready");

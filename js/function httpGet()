@@ -1,0 +1,9 @@
+function test()
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "https://graph.facebook.com/debug_token?input_token=CAAI8Am4LO3cBAATnYkODcZCFUx5SakjSFW9r4Bw3VFBIAa4wiYbdYTbGA53aVEYQccHH8ZA2y9oHupJhZCZAt71ZAPDQe3ZAVWxovsMdBwXQuHIhLtJhHoBRJZC7cGZBUBBcZCR2otw2gG0MBH4zwQIK69PMCgFHIZA7lta7f2zYKlFCBdcFsd2JckXZBry87huj5ZBFCcPs4U51AXuJbduEtNbbRYMgh7mVTz8ZD&access_token=CAAI8Am4LO3cBAATnYkODcZCFUx5SakjSFW9r4Bw3VFBIAa4wiYbdYTbGA53aVEYQccHH8ZA2y9oHupJhZCZAt71ZAPDQe3ZAVWxovsMdBwXQuHIhLtJhHoBRJZC7cGZBUBBcZCR2otw2gG0MBH4zwQIK69PMCgFHIZA7lta7f2zYKlFCBdcFsd2JckXZBry87huj5ZBFCcPs4U51AXuJbduEtNbbRYMgh7mVTz8ZD", false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
